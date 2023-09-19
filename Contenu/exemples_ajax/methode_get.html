@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>La méthode .get()</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+                $('#a').click(function () {
+                    $.get('inc/user.json', function (data) {
+                        $('#result').html(data.name + ' : ' + data.email);
+                    }, 'json');
+                });
+            });
+        </script>
+        <h2><a href="#" id="a">La méthode .get()</a></h2>
+        <div>
+            <div id="box-1">
+                <h2>Titre numéro 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, magnam, repellat dicta nesciunt aperiam cupiditate eligendi incidunt expedita architecto! Modi, praesentium, atque aliquam rem aspernatur id similique doloribus deleniti dolorem.</p>
+            </div>
+
+            <div id="box-2">
+                <h2>Titre numéro 2</h2>
+                <p id="result">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </body>
+</html>

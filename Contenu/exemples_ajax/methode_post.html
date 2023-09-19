@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>La méthode .post()</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function () {
+            $('#searchForm').submit(function (event) {
+
+                // Stop la propagation par défaut
+                event.preventDefault();
+
+                // Récupération des valeurs
+                var $form = $(this),
+                        term = $form.find("input[name='s']").val(),
+                        url = $form.attr("action");
+
+                // Envoie des données
+                var posting = $.post(url + term);
+
+                // Reception des données et affichage
+                posting.done(function (data) {
+                    var content = $(data).find('article');
+                    $('#box-2').empty().append(content);
+                });
+
+            });
+        });
+        </script>
+        <h2>La méthode .post()</h2>
+        <div>
+            <form action="../../index.php?action=confirmer&id=" id="searchForm">
+                <input type="text" name="s" placeholder="Rechercher…">
+                <input type="submit" value="Ok">
+            </form>
+
+            <div id="box-1">
+                <h2>Titre numéro 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, magnam, repellat dicta nesciunt aperiam cupiditate eligendi incidunt expedita architecto! Modi, praesentium, atque aliquam rem aspernatur id similique doloribus deleniti dolorem.</p>
+            </div>
+
+            <div id="box-2">
+                <h2>Titre numéro 2</h2>
+                <p id="result">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </body>
+</html>
