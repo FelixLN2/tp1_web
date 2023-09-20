@@ -42,7 +42,7 @@ class Vue {
         $donnees_gabarit = [
             'titre' => $this->titre, 'contenu' => $contenu,
             'racineWeb' => $racineWeb,
-            'message' => $donnees['message']
+           // 'message' => $donnees['message']
         ];
         // On ajoute l'utilisateur en session s'il y a lieu
         if (isset($donnees['utilisateur'])) {

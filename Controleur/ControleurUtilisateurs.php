@@ -32,8 +32,9 @@ class ControleurUtilisateurs extends Controleur {
                 $this->requete->getSession()->setAttribut('erreur', 'mdp');
                 $this->rediriger('Utilisateurs');
             }
-        } else
+        } else {
             throw new Exception("Action impossible : login ou mot de passe non défini");
+        }
     }
 
     public function deconnecter() {

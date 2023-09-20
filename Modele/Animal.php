@@ -5,24 +5,24 @@ require_once 'Framework/Modele.php';
 class Animal extends Modele {
 
 // Renvoie la liste de tous les animaux, triés par identifiant décroissant
-    public function getAnimals() {
+    public function getAnimaux() {
         $sql = 'select * from animaux'
-                . ' order by ID desc';
+                . ' order by animal_id desc';
         $animal = $this->executerRequete($sql);
         return $animal;
     }
 
 // Renvoie la liste de tous les aniamuxc, triés par identifiant décroissant
     public function setAnimal($animal) {
-        $sql = 'INSERT INTO animaux (nom, description, utilisateur_id, genre_id) VALUES(?, ?)';
-        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'], $animal['utilisateur_id'], $animal['genre_id']]);
+        $sql = 'INSERT INTO animaux (nom, description,date, utilisateur_id, genre_id) VALUES(?, ?, NOW(),?,?)';
+        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'],  $animal['utilisateur_id'], $animal['genre_id']]);
         return $result;
     }
 
 // Renvoie les informations sur un aniaml
     function getAnimal($idAnimal) {
         $sql = 'select * from animaux'
-                . ' where ID=?';
+                . ' where animal_id=?';
         $animal = $this->executerRequete($sql, [$idAnimal]);
         if ($animal->rowCount() == 1) {
             return $animal->fetch();  // Accès à la première ligne de résultat
@@ -35,7 +35,7 @@ class Animal extends Modele {
     public function deleteAnimal($id) {
         $sql = 'UPDATE animaux'
                 . ' SET efface = 1'
-                . ' WHERE id = ?';
+                . ' WHERE animal_id = ?';
         $result = $this->executerRequete($sql, [$id]);
         return $result;
     }
@@ -44,7 +44,7 @@ class Animal extends Modele {
     public function restoreAnimal($id) {
         $sql = 'UPDATE animaux'
                 . ' SET efface = 0'
-                . ' WHERE id = ?';
+                . ' WHERE animal_id = ?';
         $result = $this->executerRequete($sql, [$id]);
         return $result;
     }
@@ -52,9 +52,9 @@ class Animal extends Modele {
 // Met à jour un animal
     public function updateAnimal($animal) {
         $sql = 'UPDATE animaux'
-                . ' SET nom = ?, description = ?, utilisateur_id = ?, genre_id = ?'
-                . ' WHERE id = ?';
-        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'], $animal['utilisateur_id'], $animal['genre_id']]);
+                . ' SET nom = ?, description = ?, date = NOW(), utilisateur_id = ?, genre_id = ?'
+                . ' WHERE animal_id = ?';
+        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'],   $animal['utilisateur_id'], $animal['genre_id']]);
         return $result;
     }
     
