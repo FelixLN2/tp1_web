@@ -27,7 +27,7 @@
                     <h3>TESTS</h3>
                 </a>
                 <?php if (isset($utilisateur)) : ?>
-                    <h3>Bonjour <?= $utilisateur['pseudo'] ?>,
+                    <h3>Bonjour <?= $utilisateur['nom'] ?>,
                         <a href="Utilisateurs/deconnecter"><small>[Se déconnecter]</small></a>
                     </h3>
                 <?php else : ?>

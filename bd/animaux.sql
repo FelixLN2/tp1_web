@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 19 sep. 2023 à 02:02
+-- Généré le : mer. 20 sep. 2023 à 14:49
 -- Version du serveur : 8.0.31
 -- Version de PHP : 7.4.33
 
@@ -31,6 +31,7 @@ CREATE TABLE `animaux` (
   `animal_id` int NOT NULL,
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `description` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` date NOT NULL,
   `utilisateur_id` int NOT NULL,
   `genre_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,9 +40,9 @@ CREATE TABLE `animaux` (
 -- Déchargement des données de la table `animaux`
 --
 
-INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `utilisateur_id`, `genre_id`) VALUES
-(1, 'Vulpes', 'Renard', 1, 1),
-(2, 'Lupus', 'Loup', 2, 2);
+INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `date`, `utilisateur_id`, `genre_id`) VALUES
+(3, 'Vulpes', 'Renard\r\n', '2023-09-20', 1, 3),
+(4, 'Lupus', 'Loup', '2023-09-20', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -52,6 +53,7 @@ INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `utilisateur_id`, `gen
 CREATE TABLE `genre` (
   `genre_id` int NOT NULL,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `date` date NOT NULL,
   `utilisateur_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,9 +61,9 @@ CREATE TABLE `genre` (
 -- Déchargement des données de la table `genre`
 --
 
-INSERT INTO `genre` (`genre_id`, `nom`, `utilisateur_id`) VALUES
-(1, 'Vulpes', 1),
-(2, 'Canis', 2);
+INSERT INTO `genre` (`genre_id`, `nom`, `date`, `utilisateur_id`) VALUES
+(3, 'Vulpes', '2023-09-20', 1),
+(4, 'Lupus', '2023-09-20', 2);
 
 -- --------------------------------------------------------
 
@@ -118,13 +120,13 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `animaux`
 --
 ALTER TABLE `animaux`
-  MODIFY `animal_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `animal_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `genre_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `genre_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
