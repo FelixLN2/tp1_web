@@ -1,7 +1,7 @@
-<?php $this->titre = 'Animaux'; ?>
+<?php $this->titre = 'Le Blogue du prof'; ?>
 
 <a href="Admingenres/ajouter">
-    <h2 class="titreGenre">Ajouter un genre</h2>
+    <h2 class="titreArticle">Ajouter un genre</h2>
 </a>
 <?php foreach ($genres as $genre):
     ?>

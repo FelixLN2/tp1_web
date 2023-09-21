@@ -1,4 +1,4 @@
-<?php $titre = 'À propos du site'; ?>
+<?php $titre = 'Apropos'; ?>
 
 <ul>
     <li>Félix Laprise-Narbonne</li>
@@ -28,9 +28,9 @@
     <tr>
         <td>
             <h4>Base de données utilisée (animaux) :</h4>
-            <object data="Contenu/images/Blogue-vers-MVC-v1_0_0_0.svg" type="image/svg+xml" height="500" width="800">
+            <!--<object data="Contenu/images/Blogue-vers-MVC-v1_0_0_0.svg" type="image/svg+xml" height="500" width="800">
                 <img src="Contenu/images/blogue_phpmyadmin.jpg" alt=""/>
-            </object><br/>
+            </object><br/>-->
         </td>
     </tr>
     

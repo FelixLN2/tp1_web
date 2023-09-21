@@ -1,4 +1,4 @@
-<?php $this->titre = 'animaux'; ?>
+<?php $this->titre = 'genres'; ?>
 
 <?php foreach ($genres as $genre):
     ?>

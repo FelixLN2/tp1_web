@@ -1,7 +1,7 @@
 <?php $this->titre = "Animaux - Animaux" ?>
 
 <header>
-    <h1 id="titreAnimaux">Animaux:</h1>
+    <h1 id="titreReponses">Animaux:</h1>
 </header>
 <?php
 foreach ($animaux as $animal):

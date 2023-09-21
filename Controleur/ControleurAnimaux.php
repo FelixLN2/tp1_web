@@ -15,7 +15,7 @@ class ControleurAnimaux extends Controleur {
 // en ajoutant la fonctionnalité de faire afficher tous les commentaires
     public function index() {
         $animaux = $this->animal->getAnimaux();
-        $this->genererVue(['commentaires' => $animaux]);
+        $this->genererVue(['animaux' => $animaux]);
     }
 
 // Ajoute un commentaire à un article

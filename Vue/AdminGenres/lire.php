@@ -7,8 +7,7 @@
         <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['utilisateur_id'] ?>
         
     </header>
-    <p><?= $genre['texte'] ?></p>
-    <p><?= $genre['type'] ?></p>
+    
 </genre>
 <hr />
 

@@ -15,17 +15,18 @@
                 <a href="#" class="lang-switch" data-locale="en">English</a> |
                 <a href="#" class="lang-switch" data-locale="ru">Русский</a>
 
-                <a href=""><h1 id="Titre"><span data-i18n="Titre">Animaux </span> v1.0.0</h1></a>
-                
+                <a href=""><h1 id="titreBlog"><span data-i18n="Titre">Animaux </span> v1.0.0</h1></a>
                 <a href="<?= $utilisateur != null ? 'Admin' : ''; ?>Commentaires">
                     <h4>Afficher tous les commentaires de tous les articles</h4>
                 </a>
-                <a href="Apropos">
+                <a href="Apropos" >
                     <h4>À propos</h4>
                 </a>
+                <!--
                 <a href="tests.php">
                     <h3>TESTS</h3>
                 </a>
+                -->
                 <?php if (isset($utilisateur)) : ?>
                     <h3>Bonjour <?= $utilisateur['nom'] ?>,
                         <a href="Utilisateurs/deconnecter"><small>[Se déconnecter]</small></a>

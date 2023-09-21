@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 20 sep. 2023 à 14:49
+-- Généré le : jeu. 21 sep. 2023 à 16:45
 -- Version du serveur : 8.0.31
 -- Version de PHP : 7.4.33
 
@@ -33,16 +33,18 @@ CREATE TABLE `animaux` (
   `description` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   `date` date NOT NULL,
   `utilisateur_id` int NOT NULL,
-  `genre_id` int NOT NULL
+  `genre_id` int NOT NULL,
+  `efface` tinyint NOT NULL DEFAULT '0',
+  `prive` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `animaux`
 --
 
-INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `date`, `utilisateur_id`, `genre_id`) VALUES
-(3, 'Vulpes', 'Renard\r\n', '2023-09-20', 1, 3),
-(4, 'Lupus', 'Loup', '2023-09-20', 2, 4);
+INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `date`, `utilisateur_id`, `genre_id`, `efface`, `prive`) VALUES
+(3, 'Vulpes', 'Renard\r\n', '2023-09-20', 1, 3, 0, 0),
+(4, 'Lupus', 'Loup', '2023-09-20', 2, 4, 0, 0);
 
 -- --------------------------------------------------------
 

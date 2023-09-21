@@ -2,36 +2,39 @@
 
 require_once 'Framework/Modele.php';
 
+/**
+ * Fournit les services d'accès aux genres musicaux 
+ * 
+ * @author Baptiste Pesquet
+ */
 class Animal extends Modele {
 
-// Renvoie la liste de tous les animaux, triés par identifiant décroissant
-    public function getAnimaux() {
-        $sql = 'select * from animaux'
-                . ' order by animal_id desc';
-        $animal = $this->executerRequete($sql);
-        return $animal;
+    // Renvoie la liste des commentaires associés à un article
+    public function getAnimaux($idGenre = NULL) {
+        if ($idGenre == NULL) {
+            $sql = 'select * from animaux';
+            $animaux = $this->executerRequete($sql);
+        } else {
+            $sql = 'select * from animaux'
+                    . ' where genre_id = ?';
+            $animaux = $this->executerRequete($sql, [$idGenre]);
+        }
+        return $animaux;
     }
 
-// Renvoie la liste de tous les aniamuxc, triés par identifiant décroissant
-    public function setAnimal($animal) {
-        $sql = 'INSERT INTO animaux (nom, description,date, utilisateur_id, genre_id) VALUES(?, ?, NOW(),?,?)';
-        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'],  $animal['utilisateur_id'], $animal['genre_id']]);
-        return $result;
-    }
-
-// Renvoie les informations sur un aniaml
-    function getAnimal($idAnimal) {
+// Renvoie un commentaire spécifique
+    public function getAnimal($id) {
         $sql = 'select * from animaux'
-                . ' where animal_id=?';
-        $animal = $this->executerRequete($sql, [$idAnimal]);
+                . ' where animal_id = ?';
+        $animal = $this->executerRequete($sql, [$id]);
         if ($animal->rowCount() == 1) {
             return $animal->fetch();  // Accès à la première ligne de résultat
         } else {
-            throw new Exception("Aucun animal ne correspond à l'identifiant '$idAnimal'");
+            throw new Exception("Aucun animal ne correspond à l'identifiant '$id'");
         }
     }
-    
-    // Efface un animal
+
+// Efface un commentaire
     public function deleteAnimal($id) {
         $sql = 'UPDATE animaux'
                 . ' SET efface = 1'
@@ -39,8 +42,8 @@ class Animal extends Modele {
         $result = $this->executerRequete($sql, [$id]);
         return $result;
     }
-    
-    // Réactive un animal
+
+    // Réactive un commentaire
     public function restoreAnimal($id) {
         $sql = 'UPDATE animaux'
                 . ' SET efface = 0'
@@ -48,14 +51,12 @@ class Animal extends Modele {
         $result = $this->executerRequete($sql, [$id]);
         return $result;
     }
-    
-// Met à jour un animal
-    public function updateAnimal($animal) {
-        $sql = 'UPDATE animaux'
-                . ' SET nom = ?, description = ?, date = NOW(), utilisateur_id = ?, genre_id = ?'
-                . ' WHERE animal_id = ?';
-        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'],   $animal['utilisateur_id'], $animal['genre_id']]);
+
+// Ajoute un commentaire associés à un article
+    public function setAnimal($animal) {
+        $sql = 'INSERT INTO animaux (nom, description, date, utilisateur_id, genre_id, efface, prive) VALUES(?,?,NOW(),?,?,?,?)';
+        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'], $animal['date'], $animal['utilisateur_id'], $animal['genre_id'], $animal['efface'], $animal['prive']]);
         return $result;
     }
-    
+
 }

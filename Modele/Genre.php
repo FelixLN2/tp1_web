@@ -7,7 +7,7 @@ class Genre extends Modele {
 
 // Renvoie la liste de tous les Genres, triés par identifiant décroissant
     public function getGenres() {
-        $sql = 'select * from genres'
+        $sql = 'select * from genre'
                 . ' order by genre_id desc';
         $genres = $this->executerRequete($sql);
         return $genres;
@@ -15,14 +15,14 @@ class Genre extends Modele {
 
 // Renvoie la liste de tous les Genres, triés par identifiant décroissant
     public function setGenre($genre) {
-        $sql = 'INSERT INTO genres (nom, date, utilisateur_id) VALUES(?,NOW(), ?)';
+        $sql = 'INSERT INTO genre (nom, date, utilisateur_id) VALUES(?,NOW(), ?)';
         $result = $this->executerRequete($sql, [$genre['nom'], $genre['utilisateur_id']]);
         return $result;
     }
 
 // Renvoie les informations sur un Genre
     function getGenre($idGenre) {
-        $sql = 'select * from genres'
+        $sql = 'select * from genre'
                 . ' where genre_id=?';
         $genre = $this->executerRequete($sql, [$idGenre]);
         if ($genre->rowCount() == 1) {
@@ -33,7 +33,7 @@ class Genre extends Modele {
     }
 // Met à jour un Genre
     public function updateGenre($genre) {
-        $sql = 'UPDATE genres'
+        $sql = 'UPDATE genre'
                 . ' SET nom = ?, date = NOW(), utilisateur_id = ?'
                 . ' WHERE genre_id = ?';
         $result = $this->executerRequete($sql, [$genre['nom'], $genre['utilisateur_id']]);
