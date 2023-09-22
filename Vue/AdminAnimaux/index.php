@@ -9,7 +9,7 @@ foreach ($animaux as $animal):
     <?php if ($animal['efface'] == '0') : ?>
         <p><a href="Adminanimaux/confirmer/<?= $this->nettoyer($animal['animal_id']) ?>" >
                 [Effacer]</a>
-            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['utilisateur_id']) ?> <br/>
+            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['auteur']) ?> <br/>
             <strong><?= $this->nettoyer($animal['nom']) ?></strong><br/>
             <?= $this->nettoyer($animal['description']) ?><br />
             <a href="Admingenres/lire/<?= $this->nettoyer($animal['genre_id']) ?>" >
@@ -18,7 +18,7 @@ foreach ($animaux as $animal):
     <?php else : ?>
         <p class="efface"><a href="Adminanimaux/retablir/<?= $this->nettoyer($animal['animal_id']) ?>" >
                 [Rétablir]</a>
-            Animal du <?= $this->nettoyer($animal['date']) ?>, par <?= $this->nettoyer($animal['utilisateur_id']) ?> effacé! 
+            Animal du <?= $this->nettoyer($animal['date']) ?>, par <?= $this->nettoyer($animal['auteur']) ?> effacé! 
         </p>
     <?php endif; ?>
 <?php endforeach; ?>

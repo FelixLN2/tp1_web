@@ -54,8 +54,8 @@ class Animal extends Modele {
 
 // Ajoute un commentaire associés à un article
     public function setAnimal($animal) {
-        $sql = 'INSERT INTO animaux (nom, description, date, utilisateur_id, genre_id, efface, prive) VALUES(?,?,NOW(),?,?,?,?)';
-        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'], $animal['date'], $animal['utilisateur_id'], $animal['genre_id'], $animal['efface'], $animal['prive']]);
+        $sql = 'INSERT INTO animaux (nom, description, date, auteur, genre_id, efface, prive) VALUES(?,?,NOW(),?,?,?,?)';
+        $result = $this->executerRequete($sql, [$animal['nom'], $animal['description'], $animal['date'], $animal['auteur'], $animal['genre_id'], $animal['efface'], $animal['prive']]);
         return $result;
     }
 

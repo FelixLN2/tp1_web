@@ -1,15 +1,16 @@
 <?php
 
 require_once 'Framework/Vue.php';
-$commentaire = [
-        'id' => '999',
-        'article_id' => '111',
+$animal = [
+        'animal_id' => '3',
+        'nom' => 'Vulpus',
+        'description' => 'Renard',
         'date' => '2017-12-31',
-        'auteur' => 'auteur Test',
-        'prive' => '1',
-        'titre' => 'titre Test',
-        'texte' => 'texte Test',
+        'auteur' => 'user1',
+        'genre_id' => '3',
+        'efface' => '0',
+        'prive' => '0',
     ];
-$vue = new Vue('Confirmer', 'Commentaires');
-$vue->generer(['commentaire' => $commentaire]);
+$vue = new Vue('Confirmer', 'AdminAnimaux');
+$vue->generer(['animal' => $animal]);
 

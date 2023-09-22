@@ -12,7 +12,7 @@
                 <h1 class="titreGenre"><?= $genre['nom'] ?></h1>
             </a>
             
-            <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['utilisateur_id'] ?>
+            <p><time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['auteur'] ?></p>
         </header>
         
             

@@ -7,7 +7,7 @@
     <h2>Ajouter un genre</h2>
     <p>
         <label for="nom">nom</label> :  <input type="text" name="nom" id="nom" /><br />
-        <input type="hidden" name="utilisateur_id" value="1" /><br />
+        <input type="hidden" name="auteur" value="1" /><br />
         <input type="submit" value="Envoyer" />
     </p>
 </form>

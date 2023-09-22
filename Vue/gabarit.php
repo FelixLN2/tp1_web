@@ -22,11 +22,11 @@
                 <a href="Apropos" >
                     <h4>À propos</h4>
                 </a>
-                <!--
+                
                 <a href="tests.php">
                     <h3>TESTS</h3>
                 </a>
-                -->
+                
                 <?php if (isset($utilisateur)) : ?>
                     <h3>Bonjour <?= $utilisateur['nom'] ?>,
                         <a href="Utilisateurs/deconnecter"><small>[Se déconnecter]</small></a>

@@ -15,8 +15,8 @@ class Genre extends Modele {
 
 // Renvoie la liste de tous les Genres, triés par identifiant décroissant
     public function setGenre($genre) {
-        $sql = 'INSERT INTO genre (nom, date, utilisateur_id) VALUES(?,NOW(), ?)';
-        $result = $this->executerRequete($sql, [$genre['nom'], $genre['utilisateur_id']]);
+        $sql = 'INSERT INTO genre (nom, date, auteur) VALUES(?,NOW(), ?)';
+        $result = $this->executerRequete($sql, [$genre['nom'], $genre['auteur']]);
         return $result;
     }
 
@@ -34,9 +34,9 @@ class Genre extends Modele {
 // Met à jour un Genre
     public function updateGenre($genre) {
         $sql = 'UPDATE genre'
-                . ' SET nom = ?, date = NOW(), utilisateur_id = ?'
+                . ' SET nom = ?, date = NOW(), auteur = ?'
                 . ' WHERE genre_id = ?';
-        $result = $this->executerRequete($sql, [$genre['nom'], $genre['utilisateur_id']]);
+        $result = $this->executerRequete($sql, [$genre['nom'], $genre['auteur']]);
         return $result;
     }
     

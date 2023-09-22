@@ -4,7 +4,7 @@
     <header>
         <a href="Admingenres/modifier/<?= $genre['genre_id'] ?>"> [modifier le genre]</a><br>
         <h1 class="titreGenre"><?= $genre['nom'] ?></h1>
-        <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['utilisateur_id'] ?>
+        <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['auteur'] ?>
         
     </header>
     
@@ -28,4 +28,5 @@ foreach ($animaux as $animal):
         </p>
     <?php endif; ?>
 <?php endforeach; ?>
+
 

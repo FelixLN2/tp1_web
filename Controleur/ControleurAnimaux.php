@@ -21,8 +21,8 @@ class ControleurAnimaux extends Controleur {
 // Ajoute un commentaire à un article
     public function ajouter() {
         $animal['genre_id'] = $this->requete->getParametreId("genre_id");
-        $animal['utilisateur_id'] = $this->requete->getParametre('utilisateur_id');
-        $validation_courriel = filter_var($animal['utilisateur_id'], FILTER_VALIDATE_EMAIL);
+        $animal['auteur'] = $this->requete->getParametre('auteur');
+        $validation_courriel = filter_var($animal['auteur'], FILTER_VALIDATE_EMAIL);
         if ($validation_courriel) {
             // Éliminer un code d'erreur éventuel
             if ($this->requete->getSession()->existeAttribut('erreur')) {
@@ -31,7 +31,7 @@ class ControleurAnimaux extends Controleur {
             $animal['nom'] = $this->requete->getParametre('nom');
             $animal['description'] = $this->requete->getParametre('description');
             // Ajuster la valeur de la case à cocher
-            //$commentaire['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
+            $animal['prive'] = $this->requete->existeParametre('prive') ? 1 : 0;
             // Ajouter le commentaire à l'aide du modèle
             $this->animal->setAnimal($animal);
         } else {

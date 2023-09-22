@@ -7,7 +7,7 @@
     <h2>Modifier un genre</h2>
     <p>
         <label for="nom">Nom</label> : <input type="text" name="nom" id="nom" value="<?= $genre['nom'] ?>" /> <br />
-        <input type="hidden" name="utilisateur_id" value="1" /><br />
+        <input type="hidden" name="auteur" value="1" /><br />
         <input type="hidden" name="id" value="<?= $genre['genre_id'] ?>" /><br />
         <input type="submit" value="Modifier" />
     </p>

@@ -32,7 +32,7 @@ CREATE TABLE `animaux` (
   `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `description` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
   `date` date NOT NULL,
-  `utilisateur_id` int NOT NULL,
+  `auteur` varchar(50) NOT NULL,
   `genre_id` int NOT NULL,
   `efface` tinyint NOT NULL DEFAULT '0',
   `prive` tinyint(1) NOT NULL DEFAULT '0'
@@ -42,9 +42,9 @@ CREATE TABLE `animaux` (
 -- Déchargement des données de la table `animaux`
 --
 
-INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `date`, `utilisateur_id`, `genre_id`, `efface`, `prive`) VALUES
-(3, 'Vulpes', 'Renard\r\n', '2023-09-20', 1, 3, 0, 0),
-(4, 'Lupus', 'Loup', '2023-09-20', 2, 4, 0, 0);
+INSERT INTO `animaux` (`animal_id`, `nom`, `description`, `date`, `auteur`, `genre_id`, `efface`, `prive`) VALUES
+(3, 'Vulpes', 'Renard\r\n', '2023-09-20', "1", 3, 0, 0),
+(4, 'Lupus', 'Loup', '2023-09-20', "2", 4, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -56,16 +56,16 @@ CREATE TABLE `genre` (
   `genre_id` int NOT NULL,
   `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `date` date NOT NULL,
-  `utilisateur_id` int NOT NULL
+  `auteur` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `genre`
 --
 
-INSERT INTO `genre` (`genre_id`, `nom`, `date`, `utilisateur_id`) VALUES
-(3, 'Vulpes', '2023-09-20', 1),
-(4, 'Lupus', '2023-09-20', 2);
+INSERT INTO `genre` (`genre_id`, `nom`, `date`, `auteur`) VALUES
+(3, 'Vulpes', '2023-09-20', "1"),
+(4, 'Lupus', '2023-09-20', "2");
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ INSERT INTO `genre` (`genre_id`, `nom`, `date`, `utilisateur_id`) VALUES
 
 CREATE TABLE `utilisateurs` (
   `utilisateur_id` int NOT NULL,
-  `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `nom` varchar(50) COLLATE utf8mb4_general_ci NOT NULL UNIQUE,
   `mot_de_passe` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -97,7 +97,7 @@ INSERT INTO `utilisateurs` (`utilisateur_id`, `nom`, `mot_de_passe`) VALUES
 ALTER TABLE `animaux`
   ADD PRIMARY KEY (`animal_id`),
   ADD KEY `famille_id` (`genre_id`),
-  ADD KEY `utilisateur_id` (`utilisateur_id`),
+  ADD KEY `auteur` (`auteur`),
   ADD KEY `genus_id` (`genre_id`);
 
 --
@@ -105,7 +105,7 @@ ALTER TABLE `animaux`
 --
 ALTER TABLE `genre`
   ADD PRIMARY KEY (`genre_id`),
-  ADD KEY `utilisateur_id` (`utilisateur_id`);
+  ADD KEY `auteur` (`auteur`);
 
 --
 -- Index pour la table `utilisateurs`
@@ -144,14 +144,14 @@ ALTER TABLE `utilisateurs`
 -- Contraintes pour la table `animaux`
 --
 ALTER TABLE `animaux`
-  ADD CONSTRAINT `animaux_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`),
+  ADD CONSTRAINT `animaux_ibfk_1` FOREIGN KEY (`auteur`) REFERENCES `utilisateurs` (`utilisateur_id`),
   ADD CONSTRAINT `animaux_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
 
 --
 -- Contraintes pour la table `genre`
 --
 ALTER TABLE `genre`
-  ADD CONSTRAINT `genre_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`);
+  ADD CONSTRAINT `genre_ibfk_1` FOREIGN KEY (`auteur`) REFERENCES `utilisateurs` (`utilisateur_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

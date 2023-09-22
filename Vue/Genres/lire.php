@@ -3,7 +3,7 @@
 <genre>
     <header>
         <h1 class="titreGenre"><?= $genre['nom'] ?></h1>
-        <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['utilisateur_id'] ?>    
+        <time><?= $genre['date'] ?></time>, par utilisateur #<?= $genre['auteur'] ?>    
     </header>
   
 </genre>
@@ -16,7 +16,7 @@
 foreach ($animaux as $animal):
     ?>
         <p>
-            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['utilisateur_id']) ?> <br/>
+            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['auteur']) ?> <br/>
             <strong><?= $this->nettoyer($animal['nom']) ?></strong><br/>
             <?= $this->nettoyer($animal['description']) ?>
         </p>
@@ -27,8 +27,10 @@ foreach ($animaux as $animal):
     <p>
         
         <label for="nom">Nom</label> :  <input type="text" name="titre" id="titre" /><br />
-        <label for="description">Description</label> :  <textarea type="text" name="description" id="description" >Écrivez une description ici</textarea><br />
+        <label for="description">Description</label> :  <textarea type="text" name="description" id="description" ></textarea><br />
+        <label for="auteur">auteur : </label><input type="text" name="auteur" id="auteur" /><br />
         <input type="hidden" name="genre_id" value="<?= $genre['genre_id'] ?>" /><br />
+        
         <input type="submit" value="Envoyer" />
     </p>
 </form>

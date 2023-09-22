@@ -1,4 +1,4 @@
-<?php $titre = "Supprimer - " . $animal['titre']; ?>
+<?php $titre = "Supprimer - " . $animal['nom']; ?>
 
 <genre>
     <header>
@@ -8,7 +8,7 @@
         <?= $animal['date'] ?><br/>
         <strong><?= $animal['nom'] ?></strong><br/>
         <?= $animal['description'] ?>
-        par <?= $animal['utilisateur_id']?>
+        par <?= $animal['auteur']?>
         </p>
     </header>
 </genre>

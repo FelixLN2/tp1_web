@@ -8,7 +8,7 @@ foreach ($animaux as $animal):
     ?>
     <?php if ($animal['efface'] == '0') : ?>
         <p>
-            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['utilisateur_id']) ?><br/>
+            <?= $this->nettoyer($animal['date']) ?>, <?= $this->nettoyer($animal['auteur']) ?><br/>
             <strong><?= $this->nettoyer($animal['nom']) ?></strong><br/>
             <?= $this->nettoyer($animal['description']) ?><br />
             <a href="Genres/lire/<?= $this->nettoyer($genre['genre_id']) ?>" >
